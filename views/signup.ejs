@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Signup</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      /* Custom Styles for Signup Form */
+      .form-container {
+        max-width: 450px;
+        margin: 0 auto;
+        padding: 30px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-label {
+        font-weight: bold;
+      }
+
+      .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+      }
+
+      .btn-primary {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 4px;
+        background-color: #007bff;
+        border-color: #007bff;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+      }
+
+      .form-text {
+        font-size: 0.9rem;
+      }
+
+      .error-message {
+        color: #dc3545;
+        font-size: 0.9rem;
+      }
+
+      .mt-4 {
+        margin-top: 2rem;
+      }
+
+      .back-link {
+        display: inline-block;
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .back-link a {
+        color: #007bff;
+        text-decoration: none;
+      }
+
+      .back-link a:hover {
+        text-decoration: underline;
+      }
+
+      /* Spacing adjustments */
+      .mb-3 {
+        margin-bottom: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <div class="container mt-4">
+      <div class="form-container">
+        <h2 class="text-center mb-4">Sign Up</h2>
+
+        <form action="/user/signup" method="post">
+          <div class="mb-3">
+            <label for="fullName" class="form-label">Full Name</label>
+            <input
+              type="text"
+              class="form-control"
+              id="fullName"
+              name="fullName"
+              required
+            />
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email address</label>
+            <input
+              type="email"
+              name="email"
+              class="form-control"
+              id="exampleInputEmail1"
+              required
+            />
+            <div id="emailHelp" class="form-text">
+              We'll never share your email with anyone else.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleInputPassword1" class="form-label">Password</label>
+            <input
+              name="password"
+              type="password"
+              class="form-control"
+              id="exampleInputPassword1"
+              required
+            />
+          </div>
+
+          <% if (locals.error) { %>
+            <div class="error-message mb-3">
+              <%= locals.error %>
+            </div>
+          <% } %>
+
+          <button type="submit" class="btn btn-primary">Sign Up</button>
+        </form>
+
+        <div class="text-center mt-3">
+          <p class="mb-0">Already have an account? <a href="/user/signin">Sign In</a></p>
+        </div>
+      </div>
+    </div>
+
+    <%- include('./partials/scripts') %>
+  </body>
+</html>

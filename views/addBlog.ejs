@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('./partials/head') %>
+    <title>Add New Blog</title>
+    <style>
+      body {
+        font-family: 'Arial', sans-serif;
+        background-color: #f4f7fa;
+      }
+
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .form-label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        font-size: 1rem;
+      }
+
+      .form-control {
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+
+      .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      .form-text {
+        font-size: 0.9rem;
+        color: #888;
+      }
+
+      .btn-primary {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+        transition: background-color 0.3s;
+      }
+
+      .btn-primary:hover {
+        background-color: #0056b3;
+      }
+
+      .mb-3 {
+        margin-bottom: 20px;
+      }
+
+      .btn-primary:focus {
+        outline: none;
+      }
+
+      input[type="file"] {
+        padding: 5px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        width: 100%;
+      }
+
+      input[type="file"]:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+
+      textarea {
+        width: 100%;
+        padding: 12px;
+        font-size: 1rem;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+        resize: vertical;
+      }
+
+      textarea:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      }
+    </style>
+  </head>
+  <body>
+    <%- include('./partials/nav') %>
+
+    <div class="container mt-3">
+      <h2 class="text-center mb-4">Create a New Blog</h2>
+      <form action="/blog" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+          <label for="coverImage" class="form-label">Cover Image</label>
+          <input
+            type="file"
+            class="form-control"
+            id="coverImage"
+            name="coverImage"
+            aria-describedby="coverImage"
+            required
+          />
+          <div class="form-text">Select an image to be used as the cover for your blog.</div>
+        </div>
+
+        <div class="mb-3">
+          <label for="title" class="form-label">Blog Title</label>
+          <input
+            type="text"
+            class="form-control"
+            id="title"
+            name="title"
+            aria-describedby="title"
+            placeholder="Enter the title of your blog"
+            required
+          />
+        </div>
+
+        <div class="mb-3">
+          <label for="body" class="form-label">Blog Body</label>
+          <textarea
+            name="body"
+            class="form-control"
+            id="body"
+            placeholder="Write your blog content here..."
+            required
+          ></textarea>
+        </div>
+
+        <div class="mb-3 text-center">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+
+    <%- include('./partials/scripts') %>
+  </body>
+</html>
